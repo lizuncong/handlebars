@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Handlebars学习</title>
+    <meta name="description" content="">
+    <script type="text/javascript" src="./js/jquery-3.6.0.js"></script>
+    <script type="text/javascript" src="./js/handlebars-v4.7.7.js"></script>
+  </head>
+  <body>
+    <script type="text/x-handlebars-template" id="tbody">
+        {{#each student}}
+            <tr>
+                <td>{{ name }}</td>
+                <td>{{ sex }}</td>
+                <td>{{ age }}</td>
+            </tr>
+        {{/each}}
+    </script>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        var houdun = {
+            student: [
+                { name: 'lzc', sex: '男', age: 20 },
+                { name: 'lzc1', sex: '男1', age: 21 },
+                // { name: 'lzc2', sex: '男2', age: 22 },
+                // { name: 'lzc3', sex: '男3', age: 23 },
+            ]
+        }
+        var tpl = Handlebars.compile($('#tbody').html())
+        console.log('tpl...', tpl)
+        $('tbody').html(tpl(houdun))
+    </script>
+  </body>
+</html>
